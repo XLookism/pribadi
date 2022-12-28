@@ -1,0 +1,133 @@
+ORG: org-lzeS3NXkYeD0jzQKHXdt1wgM
+APIKEY: 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
+
+const response = await openai.createCompletion({
+  model: "text-davinci-003",
+  prompt: "${q}",
+  max_tokens: 2000,
+  temperature: 0.9,
+});
+
+
+
+case 'talk':
+case 'ai':{
+if (!q) return reply('contoh :\n.talk siapa Pemimpin pki')
+body: {
+  model: "text-davinci-003",
+  prompt: ${q}
+  max_tokens: 2000,
+  temperature: 0.9,
+  top_p: 1,
+  n: 1,
+  stream: false,
+  logprobs: null,
+  stop: "\n"
+})
+.then((response) => {
+reply(`OPEN AI
+${response.data.choices.text}`)
+}).catch((err) => {
+reply('Terjadi Kesalahan')
+})
+}
+break
+
+
+const fetch = require('node-fetch');
+
+const openAiUrl = 'https://api.openai.com/v1/completions';
+
+fetch(openAiUrl, {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer <API_KEY>'
+    },
+    body: JSON.stringify({
+        "prompt": "The quick brown fox",
+        "max_tokens": 50,
+        "temperature": 0.7,
+        "top_p": 1.0,
+        "n": 1,
+    })
+})
+.then(res => res.json())
+.then(data => console.log(data))
+
+case ".talk":
+        RecievedMsgPermission = true;
+        query = data.substring(queryCutter.length);
+        openai.APIkey(process.env.OPENAI_API_KEY);
+        (async () => {
+          const data = await openai.GetResponse(query);
+          msgString =
+            "You are talking with an AI\nIt said:\n-----------------------\n" +
+            data.choices[0].text;
+          sendReply(
+            message.chatId,
+            msgString,
+            message.id.toString(),
+            "Error when sending AI response: "
+          );
+        })();
+        break
+        
+        
+        OpenAI Bot
+
+const fetch = require('node-fetch');
+
+const openAiUrl = 'https://api.openai.com/v1/completions';
+
+fetch(openAiUrl, {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer <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>'
+    },
+    body: JSON.stringify({
+        "prompt": "The quick brown fox",
+        "max_tokens": 50,
+        "temperature": 0.7,
+        "top_p": 1.0,
+        "n": 1,
+    })
+})
+.then(res => res.json())
+.then(data => console.log(data))
+
+
+const data = JSON.parse(fs.readFileSync('php://input', 'utf8'));
+fs.writeFileSync('respon.json', JSON.stringify(data, null, 2));
+
+const name = data.results._data.notifyName.replace('@c.us', '');
+const phone = data.results._data.from;
+const text = data.results._data.body;
+const type = data.results._data.type;
+const apikey = data.results.apikey;
+
+function openai(text_ask) {
+  // ...
+}
+
+function kirim_wa(apikey, phone, openai) {
+  // ...
+}
+
+if (type === 'chat') {
+  let openai = openai(text);
+  if (openai === false || openai == null) {
+    kirim_wa(apikey, phone, 'Mohon Ditunggu ka, pertanyaan kamu masih diproses....');
+  }
+  const response = kirim_wa(apikey, phone, openai);
+
+  const responden = {
+    name: name,
+    nomer: phone,
+    pesan: text,
+    reply: openai
+  };
+
+  fs.appendFileSync('respon.txt', JSON.stringify(responden) + '\n');
+}
